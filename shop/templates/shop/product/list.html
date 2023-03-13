@@ -1,5 +1,6 @@
 {% extends "shop/base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
     {% if category %}{{ category.name }}{% else %}Products{% endif %}
@@ -29,7 +30,7 @@
                 </a>
                 <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
                 <br>
-                ₦{{ product.price }}
+                ₦{{ product.price|stringformat:"f"|floatformat:0|intcomma }}
             </div>
         {% endfor %}
     </div>
